@@ -1,4 +1,4 @@
- # ebay_publisher
+# ebay_publisher
 
 ### Create a virtual environment and activate:
 ```
