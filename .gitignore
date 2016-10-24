@@ -87,3 +87,5 @@ ENV/
 
 # Rope project settings
 .ropeproject
+api_config.yaml
+gsheets_credentials.json
