@@ -43,7 +43,7 @@ class EbayPublisher(object):
 
 	def add_item(self, item):
 		try:
-			api = Trading(domain='api.sandbox.ebay.com', config_file='api_config.yaml')
+			api = Trading(config_file='api_config.yaml')
 			return api.execute('VerifyAddItem', item).dict() # change for AddItem resource
 		except ConnectionError as e:
 			print 'Item insertion failed: \n\n'
