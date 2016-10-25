@@ -1,6 +1,7 @@
 import os
 import sys
 import re
+import json
 import argparse
 from datetime import datetime
 
@@ -41,9 +42,11 @@ class EbayPublisher(object):
 				print 'ItemID: {}'.format(resp.get('ItemID'))
 				print '------------'
 
-	def add_item(self, item):
+	def add_item(self, item):		
+		with open('api_config.json') as econfig:
+			config = json.load(econfig)
 		try:
-			api = Trading(config_file='api_config.yaml')
+			api = Trading(domain=config.get('domain'), appid=config.get('appid'), devid=config.get('devid'), certid=config.get('certid'), token=config.get('token'), config_file=None)
 			return api.execute('VerifyAddItem', item).dict() # change for AddItem resource
 		except ConnectionError as e:
 			print 'Item insertion failed: \n\n'
