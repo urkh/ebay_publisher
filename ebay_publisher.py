@@ -72,9 +72,9 @@ class EbayPublisher(object):
 		return {
 		    "Item": {
 				"SKU": values[0],
-				#"ProductListingDetails": {
-				#   "UPC": str(values[1]),
-				#},
+				"ProductListingDetails": {
+				   "UPC": str(values[1]),
+				},
 				"StartPrice": values[2],
 				"Title": self.clean(values[3]),
 				"Description": self.clean(values[4]),
@@ -82,7 +82,7 @@ class EbayPublisher(object):
 					"CategoryID": int(values[5])
 				},
 				"PictureDetails": {
-				    "PictureURL": values[6]
+				    "PictureURL": filter(None, [values[6], values[7], values[8], values[9], values[10], values[11]])
 				},
 				"ItemSpecifics": {
 				    "NameValueList" : [{
@@ -132,7 +132,6 @@ class EbayPublisher(object):
 						"Value": '' if len(values[26].split('|')) == 1 else self.clean(values[26].split('|')[1])
 				    }]
 				},
-
 				"SellerProfiles":{
 					"SellerPaymentProfile": {
 						"PaymentProfileID": "60182845013"
@@ -142,8 +141,7 @@ class EbayPublisher(object):
 					},
 					"SellerShippingProfile":{
 						"ShippingProfileID": "77108635013"
-					}
-					
+					}	
 				},
 
 				# Mandatory fields
